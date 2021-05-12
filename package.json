@@ -1,0 +1,26 @@
+{
+  "name": "Frontend-Mentor",
+  "version": "1.0.0",
+  "description": "",
+  "main": "sort-css-mediaqueries.js",
+  "dependencies": {
+    "css-minify": "^1.1.0",
+    "css-mqpacker": "^7.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "min-css": "css-minify -d Stats-preview-card-component/css -o Stats-preview-card-component/css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lgrisa1987/Frontend-Mentor.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lgrisa1987/Frontend-Mentor/issues"
+  },
+  "homepage": "https://github.com/lgrisa1987/Frontend-Mentor#readme"
+}
