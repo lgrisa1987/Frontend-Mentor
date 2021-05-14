@@ -1,41 +1,4 @@
-class FontsLoaded {
-
-    constructor(clase) {
-        this.clase = clase;
-        this.previewCardContainer = document.querySelector('.preview__card-container');
-        this.init();
-        this.getData();
-    }
-    init() {
-        const clase = this.clase;
-        WebFont.load({
-            google: {
-                families: [
-                    'Inter', 'Lexend Deca'
-                ]
-            },
-            active: function () {
-                document.querySelector('.preview__card-container').classList.add(clase)
-            }
-        });
-    }
-    getData() {
-        fetch("https://www.lgm-studioweb.com.ar/Frontend-Mentor/data.json")
-            .then(res => res.json())
-            .then(data => {
-                const {
-                    h1,
-                    p
-                } = data,
-                [l1, l2, l3] = data.lists;
-                this.previewCardContainer.innerHTML = `<div class="preview__card-copy"><div class="preview__card-copy-container"><h1 class="preview__card-headline">${h1}</h1><p class="preview__card-paragraph">${p}</p><ul class="preview__card-stats"><li class="preview__card-list">${l1}</li><li class="preview__card-list">${l2}</li><li class="preview__card-list">${l3}</li></ul></div></div><div class="preview__card-image" role="img" aria-label=""></div>`;
-            });
-    }
-}
-
-const fontsOnLoad = new FontsLoaded('preview__card-container--show');
-
-/* var FontsLoaded = function (clase) {
+var FontsLoaded = function (clase) {
     this.clase = clase;
     this.previewCardContainer = document.querySelector('.preview__card-container');
 }
@@ -67,6 +30,26 @@ FontsLoaded.prototype.getData = function () {
     })
 }
 
+FontsLoaded.prototype.lazyLoading = function () {
+    var previewCardImage = document.querySelector('.preview__card-image'),
+        replaceImages = function (elem) {
+            elem.classList.remove(elem.classList[1])
+        };
+    if ("IntersectionObserver" in window) {
+        var lazyImageObserver = new IntersectionObserver(function (entries) {
+            entries.forEach(function (entry) {
+                if (entry.isIntersecting) {
+                    var lazyImage = entry.target;
+                    console.log(lazyImage);
+                    replaceImages(lazyImage);
+                    lazyImageObserver.unobserve(lazyImage);
+                }
+            });
+        });
+        lazyImageObserver.observe(previewCardImage);
+    } else replaceImages(previewCardImage);
+}
+
 var fontsOnLoad = new FontsLoaded('preview__card-container--show');
 fontsOnLoad.init();
-fontsOnLoad.getData(); */
+fontsOnLoad.getData();
