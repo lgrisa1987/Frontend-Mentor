@@ -1,0 +1,23 @@
+@mixin d-flex($d, $jc, $ai) {
+    display: $d;
+    -webkit-box-pack: $jc;
+    -ms-flex-pack: $jc;
+    justify-content: $jc;
+    -webkit-box-align: $ai;
+    -ms-flex-align: $ai;
+    align-items: $ai;
+}
+
+@mixin ie11 {
+
+    @media all and (-ms-high-contrast: none),
+    (-ms-high-contrast: active) {
+        @content;
+    }
+}
+
+@mixin breakpoint($screen) {
+    @media(min-width: $screen) {
+        @content;
+    }
+}
