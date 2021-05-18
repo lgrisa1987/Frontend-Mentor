@@ -2,11 +2,12 @@
 
 class ColumnPreviewCard {
     constructor() {
-        this.initVue();
+        this.previewCard = document.querySelector('.column__preview__card');
+        this.fontsOnLoad();
     }
     initVue() {
         this.vueInstance = new Vue({
-            el: ".body-container",
+            el: ".body__container",
             data: {
                 cars: [{
                     img: "icon-sedans",
@@ -26,6 +27,19 @@ class ColumnPreviewCard {
                 }
             }
         })
+    }
+    fontsOnLoad() {
+        WebFont.load({
+            google: {
+                families: [
+                    'Big Shoulders Display', 'Lexend Deca'
+                ]
+            },
+            active: () => {
+                this.previewCard.classList.add('column__preview__card--show');
+                this.initVue();
+            }
+        });
     }
 
 };

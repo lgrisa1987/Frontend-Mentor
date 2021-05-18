@@ -28,16 +28,14 @@ body {
     background: $lg;
     padding: 8.5rem 0;
     min-height: 100vh;
-    display: none;
 
-    @include breakpoint(900px) {
+    @include breakpoint(800px) {
+        @include d-flex(flex, center, center);
+
         @include ie11 {
             height: 100vh;
+            position: relative;
         }
-    }
-
-    &--show {
-        display: block;
     }
 }
 
@@ -46,11 +44,23 @@ body {
     border-radius: 1.2rem;
     margin: 0 auto;
     overflow: hidden;
+    opacity: 0;
+    -webkit-transition: opacity .5s;
+    transition: opacity .5s;
+
+    &--show {
+        opacity: 1
+    }
 
     @include ie11 {
         width: 87.5%;
         min-width: 30rem;
         max-width: 92.2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        -webkit-transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
     }
 
     @include breakpoint(800px) {

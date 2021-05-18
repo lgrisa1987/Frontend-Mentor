@@ -1,14 +1,13 @@
 "use strict";
-
-
 var ColumnPreviewCard = function () {
-    this.bodyContainer = document.querySelector('.body__container');
+    this.previewCard = document.querySelector('.column__preview__card');
 }
 
 ColumnPreviewCard.prototype.initVue = function () {
     this.vueInstance = new Vue({
         el: ".body__container",
         data: {
+            bodyContainer: "",
             cars: [{
                 img: "icon-sedans",
                 description: "Choose a sedan for its affordability and excellent fuel economy. Ideal for cruising in the city or on your next road trip."
@@ -38,7 +37,7 @@ ColumnPreviewCard.prototype.fontsOnLoad = function () {
             ]
         },
         active: function () {
-            self.bodyContainer.classList.add('body__container--show');
+            self.previewCard.classList.add('column__preview__card--show');
             self.initVue();
         }
     });
