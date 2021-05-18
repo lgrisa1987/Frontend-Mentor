@@ -26,11 +26,9 @@ body {
 
 .body__container {
     background: $lg;
-    @include d-flex(flex, center, center);
-    width: 100%;
-    height: 100%;
+    padding: 8.5rem 0;
     min-height: 100vh;
-    opacity: 0;
+    display: none;
 
     @include breakpoint(900px) {
         @include ie11 {
@@ -39,6 +37,117 @@ body {
     }
 
     &--show {
-        opacity: 1
+        display: block;
     }
+}
+
+.column__preview__card {
+    width: clamp(30rem, 87.5%, 92.2rem);
+    border-radius: 1.2rem;
+    margin: 0 auto;
+    overflow: hidden;
+
+    @include ie11 {
+        width: 87.5%;
+        min-width: 30rem;
+        max-width: 92.2rem;
+    }
+
+    @include breakpoint(800px) {
+        @include d-flex(flex, center, flex-start)
+    }
+
+
+
+    &-block {
+        padding: 4.5rem;
+
+        @include breakpoint(800px) {
+            padding: 0 4.5rem;
+            height: 50rem;
+            @include d-flex(flex, center, center);
+        }
+
+        &--Sedans {
+            background: $orange;
+
+            .column__preview__card-btn {
+                color: $orange;
+            }
+        }
+
+        &--Suvs {
+            background: $dcyan;
+
+            .column__preview__card-btn {
+                color: $dcyan;
+            }
+        }
+
+        &--Luxury {
+            background: $vdarkcyan;
+
+            .column__preview__card-btn {
+                color: $vdarkcyan;
+            }
+        }
+
+        &--Sedans,
+        &--Suvs,
+        &--Luxury {
+            .column__preview__card-btn {
+
+                &:hover,
+                &:active {
+                    border-color: $lg;
+                    background: transparent;
+                    color: $lg;
+                }
+            }
+        }
+    }
+
+    &-headline,
+    &-description {
+        margin-top: 3.2rem;
+    }
+
+    &-headline {
+        color: $lg;
+        text-transform: uppercase;
+
+        font: {
+            family: $BigShoulders;
+            size: 4rem;
+        }
+    }
+
+    &-description {
+        color: $w;
+        font-size: 1.5rem;
+    }
+
+    &-btn {
+        margin-top: 2.5rem;
+        font-family: inherit;
+        background-color: $lg;
+        outline: none;
+        border: 2px solid transparent;
+        height: 4.7rem;
+        line-height: 1;
+        padding: 0 2.9rem;
+        border-radius: 2.5rem;
+        cursor: pointer;
+        -webkit-transition: color .5s ease,
+            border-color .5s ease,
+            background .5s ease;
+        transition: color .5s ease,
+            border-color .5s ease,
+            background .5s ease;
+
+        @include breakpoint(800px) {
+            margin-top: 7.8rem
+        }
+    }
+
 }
